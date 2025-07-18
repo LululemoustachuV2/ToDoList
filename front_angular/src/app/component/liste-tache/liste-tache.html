@@ -1,0 +1,39 @@
+<div>
+  <h2>Liste des tâches</h2>
+
+  <div>
+    @if (taches.length > 0) {
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>TITRE</th>
+          <th>DESCRIPTION</th>
+          <th>COMPLETER</th>
+          <th>ACTIONS</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (t of taches; track t._id) {
+        <tr [style.background-color]="t.completed === true ? 'green' : ''">
+          <td>{{ t._id }}</td>
+          <td>{{ t.title }}</td>
+          <td>{{ t.description }}</td>
+          <td>{{ t.completed }}</td>
+          <td>
+            <button [routerLink]="['/task/' + t._id]">Modifier</button>
+            <button (click)="deleteTache(t)">Supprimer</button>
+          </td>
+        </tr>
+        } @empty {
+        <tr>
+          <td colspan="5">Aucune taches trouvé.</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    } @else {
+    <p>La liste est vide</p>
+    }
+  </div>
+</div>
