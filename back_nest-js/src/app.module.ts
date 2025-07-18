@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -9,9 +10,8 @@ import { SchemaTaches, TachesSchema } from './schema/schema-taches.schema';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://UserTestTODO:PUoR4YooCNdNFgG2@cluster0.4lgxlgj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
-    ),
+     ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.MONGO_URI || 'mongodb://localhost:27017/default_db'),
     ModuleTachesModule,
     MongooseModule.forFeature([
       { name: SchemaTaches.name, schema: TachesSchema },
