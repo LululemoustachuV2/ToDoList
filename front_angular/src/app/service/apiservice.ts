@@ -2,7 +2,6 @@ import {
   HttpClient,
   HttpErrorResponse,
   HttpHeaders,
-  HttpParams,
 } from '@angular/common/http';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -15,10 +14,6 @@ export class APIService {
   public static ROOT_URL: String = environment.apiUrl;
   public static DEFAULT_HEADER: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
-  });
-  public static FROM_HEADER: HttpHeaders = new HttpHeaders({
-    //TODO: change this to the correct content type if needed
-    'Content-Type': 'application/x-www-form-urlencoded',
   });
 
   httpError(error: HttpErrorResponse) {
@@ -48,7 +43,7 @@ export class APIService {
     }
     let httpOptions: Object = {
       observe: 'body',
-      repsponseType: 'json',
+      responseType: 'json',
       headers: headers,
     };
     return this.httpClient
@@ -65,7 +60,7 @@ export class APIService {
     }
     let httpOptions: Object = {
       observe: 'body',
-      repsponseType: 'json',
+      responseType: 'json',
       headers: headers,
     };
     return this.httpClient
@@ -75,15 +70,15 @@ export class APIService {
 
   public sendPostRequest<T>(
     url: string,
-    params: HttpParams,
+    params: any,
     headers: HttpHeaders | null
   ): Observable<T> {
     if (headers == null) {
-      headers = APIService.FROM_HEADER;
+      headers = APIService.DEFAULT_HEADER;
     }
     let httpOptions: Object = {
-      observe: 'response',
-      repsponseType: 'json',
+      observe: 'body',
+      responseType: 'json',
       headers: headers,
     };
     return this.httpClient
@@ -93,15 +88,15 @@ export class APIService {
 
   public sendPutRequest<T>(
     url: string,
-    params: HttpParams,
+    params: any,
     headers: HttpHeaders | null
   ): Observable<T> {
     if (headers == null) {
-      headers = APIService.FROM_HEADER;
+      headers = APIService.DEFAULT_HEADER;
     }
     let httpOptions: Object = {
       observe: 'body',
-      repsponseType: 'json',
+      responseType: 'json',
       headers: headers,
     };
     return this.httpClient

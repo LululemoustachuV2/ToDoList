@@ -23,33 +23,22 @@ export class TacheService {
   }
 
   getTacheById(id: string): Observable<TacheModel> {
-    let url = this.ROOT_TACHE_URL + '/tasks' + id;
+    let url = this.ROOT_TACHE_URL + '/tasks/' + id;
     return this.apiService.sendGetRequest<TacheModel>(url, null);
   }
 
   deleteTache(id: string): Observable<TacheModel> {
-    let url = this.ROOT_TACHE_URL + '/tasks' + id;
+    let url = this.ROOT_TACHE_URL + '/tasks/' + id;
     return this.apiService.sendDeleteRequest<TacheModel>(url, null);
   }
 
   addTache(tm: TacheModel): Observable<TacheModel> {
-    let url = this.ROOT_TACHE_URL + '/tasks';
-    let params: HttpParams = new HttpParams()
-      .append(this.PARAM_TACHE_TITLE, tm.title)
-      .append(this.PARAM_TACHE_DESCRIPTION, tm.description)
-      .append(this.PARAM_TACHE_COMPLETED, tm.completed)
-      .append(this.PARAM_TACHE_CRERATED_AT, tm.createdAt.toISOString());
-    return this.apiService.sendPostRequest<TacheModel>(url, params, null);
+    const url = this.ROOT_TACHE_URL + '/tasks';
+    return this.apiService.sendPostRequest<TacheModel>(url, tm, null);
   }
 
   updateTache(tm: TacheModel, id: string): Observable<TacheModel> {
-    let url = this.ROOT_TACHE_URL + '/tasks' + id;
-    let params: HttpParams = new HttpParams()
-      .append(this.PARAM_TACHE_ID, tm._id)
-      .append(this.PARAM_TACHE_TITLE, tm.title)
-      .append(this.PARAM_TACHE_DESCRIPTION, tm.description)
-      .append(this.PARAM_TACHE_COMPLETED, tm.completed)
-      .append(this.PARAM_TACHE_CRERATED_AT, tm.createdAt.toISOString());
-    return this.apiService.sendPutRequest<TacheModel>(url, params, null);
+    let url = this.ROOT_TACHE_URL + '/tasks/' + id;
+    return this.apiService.sendPutRequest<TacheModel>(url, tm, null);
   }
 }

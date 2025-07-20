@@ -1,1 +1,12 @@
-<p>ajout-tache works!</p>
+<form [formGroup]="TacheCreaForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Titre</label>
+    <input id="title" formControlName="title" />
+  </div>
+  <div>
+    <label for="description">Description</label>
+    <input id="description" formControlName="description" />
+  </div>
+  <button type="submit">Valider</button>
+  <button [routerLink]="['/tasks']">Annuler</button>
+</form>
