@@ -11,11 +11,12 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './liste-tache.html',
   styleUrl: './liste-tache.scss',
 })
-//TODO: Implementer une barre de recherche pour filtrer les taches
 export class ListeTache implements OnInit {
   taches: TacheModel[] = [];
   filtre: string = 'toutes';
   isDark: boolean = false;
+  recherche: string = '';
+
   constructor(private sT: TacheService, private router: Router) {}
 
   ngOnInit(): void {
@@ -40,11 +41,24 @@ export class ListeTache implements OnInit {
   }
 
   get tachesFiltrees(): TacheModel[] {
-    if (this.filtre === 'actives')
-      return this.taches.filter((t) => !t.completed);
-    if (this.filtre === 'terminees')
-      return this.taches.filter((t) => t.completed);
-    return this.taches;
+    let result = this.taches;
+
+    if (this.filtre === 'actives') {
+      result = result.filter((t) => !t.completed);
+    } else if (this.filtre === 'terminees') {
+      result = result.filter((t) => t.completed);
+    }
+
+    if (this.recherche.trim()) {
+      const keyword = this.recherche.trim().toLowerCase();
+      result = result.filter(
+        (t) =>
+          t.title.toLowerCase().includes(keyword) ||
+          t.description.toLowerCase().includes(keyword)
+      );
+    }
+
+    return result;
   }
 
   toggleTheme(): void {

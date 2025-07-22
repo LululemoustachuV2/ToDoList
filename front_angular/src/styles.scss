@@ -47,40 +47,36 @@ body {
   flex-grow: 1;
 }
 body.dark {
-  background: linear-gradient(135deg, #121212, #1e1e1e);
-  color: #f5f5f5;
+  background: linear-gradient(135deg, #121212, #1e1e1e) !important;
+  color: #f5f5f5 !important;
 
   .liste-taches-container {
-    background: rgba(30, 30, 30, 0.7);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    background: rgba(30, 30, 30, 0.7) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
   }
 
   .todo-table tbody tr td {
-    background-color: rgba(40, 40, 40, 0.9);
-    color: #f5f5f5;
+    background-color: rgba(40, 40, 40, 0.9) !important;
+    color: #f5f5f5 !important;
 
     &:hover {
-      background-color: #2c2c3c;
+      background-color: #2c2c3c !important;
     }
   }
   .filtre {
-    color: #f5f5f5;
-  }
-
-  .btn.modifier {
-    background: linear-gradient(135deg, #7b61ff, #5a3fff);
+    color: #f5f5f5 !important;
   }
 
   .btn.supprimer {
-    background: linear-gradient(135deg, #ff5c5c, #d84444);
+    background: linear-gradient(135deg, #ff5c5c, #d84444) !important;
   }
 
   .filtre-container select {
-    background: #2e2e2e;
-    color: #eee;
+    background: #2e2e2e !important;
+    color: #eee !important;
 
     &:focus {
-      background-color: #3a3a3a;
+      background-color: #3a3a3a !important;
     }
   }
   .main-navbar {
@@ -89,7 +85,7 @@ body.dark {
       76,
       77,
       0.4
-    ) !important; // teste avec !important pour debug
+    ) !important;
     border-bottom: 1px solid rgba(41, 40, 40, 0.1);
 
     .nav-content {
@@ -110,24 +106,34 @@ body.dark {
       }
     }
   }
+  .recherche-input {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f1f5f9 !important;
+
+    &:focus {
+      background: #0f172a !important;
+      border-color: #64748b !important;
+    }
+  }
   form {
-    background: rgba(30, 30, 30, 0.7);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-    color: #eee;
+    background: rgba(30, 30, 30, 0.7) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+    color: #eee !important;
 
     label {
-      color: #a0aec0;
+      color: #a0aec0 !important;
     }
 
     input {
-      background-color: #1e1e1e;
-      border: 2px solid #475569;
-      color: #cbd5e1;
+      background-color: #1e1e1e !important;
+      border: 2px solid #475569 !important;
+      color: #cbd5e1 !important;
 
       &:focus {
-        border-color: #7b61ff;
-        box-shadow: 0 0 12px 3px rgba(123, 97, 255, 0.7);
-        background-color: #2c2c3c;
+        border-color: #7b61ff !important;
+        box-shadow: 0 0 12px 3px rgba(123, 97, 255, 0.7) !important;
+        background-color: #2c2c3c !important;
       }
     }
   }

@@ -7,6 +7,15 @@
   <div>
     <label for="title">Titre</label>
     <input id="title" formControlName="title" />
+    <div
+      class="form-error"
+      *ngIf="
+        TacheModifForm.get('title')?.touched &&
+        TacheModifForm.get('title')?.invalid
+      "
+    >
+      Le titre est requis.
+    </div>
   </div>
   <div>
     <label for="description">Description</label>

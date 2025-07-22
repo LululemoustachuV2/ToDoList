@@ -38,10 +38,10 @@
 
 .filtre-container {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  align-items: baseline;
   gap: 10px;
   margin-bottom: 20px;
+  justify-content: space-between;
 
   select {
     padding: 10px 16px;
@@ -216,3 +216,27 @@
     }
   }
 }
+.recherche-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  .recherche-input {
+    padding: 12px 20px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #475569;
+      background-color: #fff;
+    }
+  }
+}
+

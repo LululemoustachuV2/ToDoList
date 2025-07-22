@@ -9,10 +9,11 @@ import {
 } from '@angular/forms';
 import { TacheModel } from '../../model/tache-model';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-edit-tache',
-  imports: [RouterLink, FormsModule, ReactiveFormsModule],
+  imports: [RouterLink, FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './edit-tache.html',
   styleUrl: './edit-tache.scss',
 })
@@ -26,7 +27,7 @@ export class EditTache implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    //TODO: Ajout d'affichage d'erreurs pour les champs du formulaire
+    //TODO: Ajout d'affichage d'erreurs pour les champs du formulaire tittle
     this.TacheModifForm = this.fb.group({
       _id: [{ value: '', disabled: true }],
       title: ['', Validators.required],
