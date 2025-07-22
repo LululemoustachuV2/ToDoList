@@ -1,4 +1,10 @@
-<div class="navbar">
-    <button [routerLink]="['tasks']" routerLinkActive="activeLink">Liste des tâches</button>
-    <button [routerLink]="['new']" routerLinkActive="activeLink">Ajouter des tâches</button>
-</div>
+<nav class="main-navbar">
+  <div class="nav-content">
+    <button [routerLink]="['tasks']" routerLinkActive="activeLink" class="nav-btn">
+      Liste des tâches
+    </button>
+    <button [routerLink]="['new']" routerLinkActive="activeLink" class="nav-btn">
+      Ajouter des tâches
+    </button>
+  </div>
+</nav>

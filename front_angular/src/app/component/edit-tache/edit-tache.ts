@@ -26,11 +26,12 @@ export class EditTache implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    //TODO: Faire en sorte que le champ completed soit coté liste des taches donc le deplacer dans liste-tache.ts
+    //TODO: Ajout d'affichage d'erreurs pour les champs du formulaire
     this.TacheModifForm = this.fb.group({
       _id: [{ value: '', disabled: true }],
       title: ['', Validators.required],
       description: [''],
+      completed: [false, Validators.required],
       createdAt: [{ value: '', disabled: true }],
     });
   }

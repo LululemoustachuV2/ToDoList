@@ -1,0 +1,111 @@
+form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", sans-serif;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transition: all 0.3s ease-in-out;
+
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    color: #475569;
+    user-select: none;
+  }
+
+  input {
+    padding: 12px 16px;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: 2px solid #a0aec0; // gris bleuté doux
+    background-color: #f8fafc;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    color: #334155;
+    font-weight: 600;
+
+    &:focus {
+      border-color: #475569;
+      box-shadow: 0 0 8px 2px rgba(71, 85, 105, 0.5);
+      background-color: #fff;
+      animation: pulseBorder 1.2s infinite alternate ease-in-out;
+    }
+  }
+
+  button {
+    padding: 12px 24px;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  button[type="submit"] {
+    background: linear-gradient(135deg, #475569, #64748b);
+    color: white;
+    margin-right: 12px;
+    width: fit-content;
+  }
+
+  button[routerLink] {
+    background: linear-gradient(135deg, #ff5c5c, #ff9a9a);
+    color: white;
+    width: fit-content;
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px;
+    gap: 16px;
+
+    button {
+      width: 100%;
+    }
+  }
+}
+.titre {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #475569;
+  letter-spacing: 0.5px;
+  animation: fadeInDown 0.5s ease;
+}
+@keyframes pulseBorder {
+  from {
+    box-shadow: 0 0 10px 3px rgba(71, 85, 105, 0.4);
+  }
+  to {
+    box-shadow: 0 0 15px 5px rgba(71, 85, 105, 0.8);
+  }
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

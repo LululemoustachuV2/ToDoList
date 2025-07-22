@@ -1,55 +1,63 @@
-<div>
-  <h2>Liste des tâches</h2>
-  <div>
-    <label for="filtre">Filtrer : </label>
+
+<div class="liste-taches-container">
+  <div class="theme-toggle">
+  <label class="switch">
+    <input type="checkbox" [checked]="isDark" (change)="toggleTheme()" />
+    <span class="slider"></span>
+  </label>
+</div>
+  <h2 class="titre">Liste des tâches</h2>
+
+  <div class="filtre-container">
+    <label for="filtre" class="filtre">Filtrer :</label>
     <select id="filtre" [(ngModel)]="filtre">
       <option value="toutes">Toutes</option>
       <option value="actives">Actives</option>
       <option value="terminees">Terminées</option>
     </select>
   </div>
-  <div>
+
+  <div class="table-container">
     @if (tachesFiltrees.length > 0) {
-    <table>
+    <table class="todo-table">
       <thead>
         <tr>
           <th>ID</th>
           <th>TITRE</th>
           <th>DESCRIPTION</th>
           <th>COMPLETE</th>
-          <th>DATE DE CREATION</th>
+          <th>DATE</th>
           <th>ACTIONS</th>
         </tr>
       </thead>
       <tbody>
         @for (t of tachesFiltrees; track t._id) {
-        <tr [style.background-color]="t.completed === true ? 'green' : ''">
+        <tr [class.completed]="t.completed">
           <td>{{ t._id }}</td>
           <td>{{ t.title }}</td>
           <td>{{ t.description }}</td>
           <td>
             <input
               type="checkbox"
-              id="completed"
               [checked]="t.completed"
               (change)="toggleCompletion(t)"
             />
           </td>
           <td>{{ t.createdAt | date : "short" }}</td>
           <td>
-            <button [routerLink]="['/task/' + t._id]">Modifier</button>
-            <button (click)="deleteTache(t)">Supprimer</button>
+            <button class="btn modifier" [routerLink]="['/task/' + t._id]">Modifier</button>
+            <button class="btn supprimer" (click)="deleteTache(t)">Supprimer</button>
           </td>
         </tr>
         } @empty {
         <tr>
-          <td colspan="6">Aucune taches trouvé.</td>
+          <td colspan="6">Aucune tâche trouvée.</td>
         </tr>
         }
       </tbody>
     </table>
     } @else {
-    <p>La liste est vide</p>
+    <p class="liste-vide">La liste est vide</p>
     }
   </div>
 </div>

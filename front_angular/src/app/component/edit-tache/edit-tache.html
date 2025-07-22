@@ -1,10 +1,10 @@
 <form [formGroup]="TacheModifForm" (ngSubmit)="onSubmit()">
-  
-    <div>
-    <label for="_id">Id</label>
-    <input id="_id" formControlName="_id" />
+  <h2 class="titre">Modification de tâche</h2>
+  <div>
+    <label for="_id" class="disable">Id</label>
+    <input id="_id" class="disable" formControlName="_id" />
   </div>
-    <div>
+  <div>
     <label for="title">Titre</label>
     <input id="title" formControlName="title" />
   </div>
@@ -12,10 +12,10 @@
     <label for="description">Description</label>
     <input id="description" formControlName="description" />
   </div>
-    <div>
-        <label for="createdAt">Date de création </label>
-        <input id="createdAt" formControlName="createdAt"/>
-    </div>
+  <div>
+    <label for="createdAt" class="disable">Date de création </label>
+    <input id="createdAt" class="disable" formControlName="createdAt" />
+  </div>
   <button type="submit">Valider</button>
   <button [routerLink]="['/tasks']">Annuler</button>
 </form>

@@ -1,20 +1,21 @@
-
 // Include theming for Angular Material with `mat.theme()`.
 // This Sass mixin will define CSS variables that are used for styling Angular Material
 // components according to the Material 3 design spec.
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 html {
-  @include mat.theme((
-    color: (
-      primary: mat.$magenta-palette,
-      tertiary: mat.$violet-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$magenta-palette,
+        tertiary: mat.$violet-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
 
   // Default the application to a light color theme. This can be changed to
   // `dark` to enable the dark color theme, or to `light dark` to defer to the
@@ -27,7 +28,115 @@ html {
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
-}/* You can add global styles to this file, and also import other style files */
+} /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+body.dark {
+  background: linear-gradient(135deg, #121212, #1e1e1e);
+  color: #f5f5f5;
+
+  .liste-taches-container {
+    background: rgba(30, 30, 30, 0.7);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .todo-table tbody tr td {
+    background-color: rgba(40, 40, 40, 0.9);
+    color: #f5f5f5;
+
+    &:hover {
+      background-color: #2c2c3c;
+    }
+  }
+  .filtre {
+    color: #f5f5f5;
+  }
+
+  .btn.modifier {
+    background: linear-gradient(135deg, #7b61ff, #5a3fff);
+  }
+
+  .btn.supprimer {
+    background: linear-gradient(135deg, #ff5c5c, #d84444);
+  }
+
+  .filtre-container select {
+    background: #2e2e2e;
+    color: #eee;
+
+    &:focus {
+      background-color: #3a3a3a;
+    }
+  }
+  .main-navbar {
+    background: rgba(
+      75,
+      76,
+      77,
+      0.4
+    ) !important; // teste avec !important pour debug
+    border-bottom: 1px solid rgba(41, 40, 40, 0.1);
+
+    .nav-content {
+      background: rgba(51, 65, 85, 0.3) !important;
+
+      .nav-btn {
+        color: #f1f5f9 !important;
+
+        &:hover {
+          background: rgba(71, 85, 105, 0.4) !important;
+        }
+
+        &.activeLink {
+          background: #f1f5f9 !important;
+          color: #1e293b !important;
+          box-shadow: 0 0 12px rgba(241, 245, 249, 0.4) !important;
+        }
+      }
+    }
+  }
+  form {
+    background: rgba(30, 30, 30, 0.7);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    color: #eee;
+
+    label {
+      color: #a0aec0;
+    }
+
+    input {
+      background-color: #1e1e1e;
+      border: 2px solid #475569;
+      color: #cbd5e1;
+
+      &:focus {
+        border-color: #7b61ff;
+        box-shadow: 0 0 12px 3px rgba(123, 97, 255, 0.7);
+        background-color: #2c2c3c;
+      }
+    }
+  }
+}
+.app-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  min-height: 100vh;
+}

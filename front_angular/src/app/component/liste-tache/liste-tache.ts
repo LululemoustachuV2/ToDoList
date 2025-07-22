@@ -11,13 +11,16 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './liste-tache.html',
   styleUrl: './liste-tache.scss',
 })
+//TODO: Implementer une barre de recherche pour filtrer les taches
 export class ListeTache implements OnInit {
   taches: TacheModel[] = [];
   filtre: string = 'toutes';
-
+  isDark: boolean = false;
   constructor(private sT: TacheService, private router: Router) {}
 
   ngOnInit(): void {
+    this.isDark = localStorage.getItem('theme') === 'dark';
+    this.applyTheme();
     this.sT.getAllTache().subscribe((tache) => {
       this.taches = tache.reverse();
     });
@@ -42,5 +45,19 @@ export class ListeTache implements OnInit {
     if (this.filtre === 'terminees')
       return this.taches.filter((t) => t.completed);
     return this.taches;
+  }
+
+  toggleTheme(): void {
+    this.isDark = !this.isDark;
+    localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+    this.applyTheme();
+  }
+
+  applyTheme(): void {
+    if (this.isDark) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
   }
 }
