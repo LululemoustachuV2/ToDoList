@@ -12,10 +12,13 @@ form {
   flex-direction: column;
   gap: 24px;
   transition: all 0.3s ease-in-out;
+  // Container élégant avec fond translucide flouté et ombre douce,
+  // layout vertical espacé, transition fluide sur styles.
 
   div {
     display: flex;
     flex-direction: column;
+    // Chaque div organise label et input en colonne pour clarté.
   }
 
   label {
@@ -24,6 +27,7 @@ form {
     margin-bottom: 6px;
     color: #475569;
     user-select: none;
+    // Label stylé, bien lisible, non sélectionnable pour éviter les sélections accidentelles.
   }
 
   input {
@@ -36,12 +40,14 @@ form {
     outline: none;
     color: #334155;
     font-weight: 600;
+    // Input large et confortable, avec une bordure et couleurs douces.
 
     &:focus {
       border-color: #475569;
       box-shadow: 0 0 8px 2px rgba(71, 85, 105, 0.5);
       background-color: #fff;
       animation: pulseBorder 1.2s infinite alternate ease-in-out;
+      // Focus avec halo animé pour attirer l’attention sans agressivité.
     }
   }
 
@@ -53,10 +59,12 @@ form {
     cursor: pointer;
     border: none;
     transition: transform 0.2s ease, box-shadow 0.3s ease;
+    // Boutons larges, modernes, avec effet hover léger et classe.
 
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      // Hover qui fait légèrement décoller le bouton avec ombre portée.
     }
   }
 
@@ -65,12 +73,14 @@ form {
     color: white;
     margin-right: 12px;
     width: fit-content;
+    // Bouton valider en dégradé bleu-gris, sérieux et visible.
   }
 
   button[routerLink] {
     background: linear-gradient(135deg, #ff5c5c, #ff9a9a);
     color: white;
     width: fit-content;
+    // Bouton annuler en dégradé rouge, contraste et claire distinction d’action.
   }
 
   @media (max-width: 480px) {
@@ -79,9 +89,11 @@ form {
 
     button {
       width: 100%;
+      // Responsive : boutons prennent toute la largeur sur petits écrans.
     }
   }
 }
+
 .titre {
   font-size: 2.2rem;
   text-align: center;
@@ -90,10 +102,14 @@ form {
   color: #475569;
   letter-spacing: 0.5px;
   animation: fadeInDown 0.5s ease;
+  // Titre imposant, centré, avec animation d’entrée fluide.
 }
+
 .disable {
   opacity: 0.6;
+  // Style appliqué aux champs non modifiables pour indiquer leur état disabled visuellement.
 }
+
 @keyframes pulseBorder {
   from {
     box-shadow: 0 0 10px 3px rgba(71, 85, 105, 0.4);
@@ -101,7 +117,9 @@ form {
   to {
     box-shadow: 0 0 15px 5px rgba(71, 85, 105, 0.8);
   }
+  // Animation de halo qui pulse sur l’input en focus.
 }
+
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -111,12 +129,15 @@ form {
     opacity: 1;
     transform: translateY(0);
   }
+  // Animation d’apparition du titre avec glissement vers le bas.
 }
+
 .form-error {
-  color: #ef4444;
+  color: #ef4444; // Rouge vif pour signaler l’erreur
   font-size: 0.875rem;
   margin-top: 4px;
   animation: fadeIn 0.3s ease-in-out;
+  // Message d’erreur qui apparaît doucement sous le champ concerné.
 }
 
 @keyframes fadeIn {
@@ -128,4 +149,5 @@ form {
     opacity: 1;
     transform: translateY(0);
   }
+  // Animation douce d’apparition pour le message d’erreur.
 }

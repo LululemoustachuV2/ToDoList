@@ -1,13 +1,19 @@
+<!-- Conteneur principal de la section liste des tâches -->
 <div class="liste-taches-container">
+  <!-- Commutateur pour activer/désactiver le mode sombre -->
   <div class="theme-toggle">
     <label class="switch">
       <input type="checkbox" [checked]="isDark" (change)="toggleTheme()" />
       <span class="slider"></span>
     </label>
   </div>
+
+  <!-- Titre principal de la section -->
   <h2 class="titre">Liste des tâches</h2>
 
+  <!-- Zone de filtrage et de recherche -->
   <div class="filtre-container">
+    <!-- Champ de recherche en temps réel (lié au modèle 'recherche') -->
     <div class="recherche-container">
       <input
         type="text"
@@ -16,6 +22,8 @@
         class="recherche-input"
       />
     </div>
+
+    <!-- Menu déroulant pour filtrer les tâches par statut -->
     <div>
       <label for="filtre" class="filtre">Filtrer :</label>
       <select id="filtre" [(ngModel)]="filtre">
@@ -26,8 +34,11 @@
     </div>
   </div>
 
+  <!-- Table d’affichage conditionnelle : s’affiche uniquement si des tâches sont présentes -->
   <div class="table-container">
     @if (tachesFiltrees.length > 0) {
+
+    <!-- Table affichant les tâches filtrées -->
     <table class="todo-table">
       <thead>
         <tr>
@@ -40,11 +51,14 @@
         </tr>
       </thead>
       <tbody>
+        <!-- Boucle sur chaque tâche filtrée (tracking par _id) -->
         @for (t of tachesFiltrees; track t._id) {
         <tr [class.completed]="t.completed">
           <td>{{ t._id }}</td>
           <td>{{ t.title }}</td>
           <td>{{ t.description }}</td>
+
+          <!-- Checkbox pour marquer une tâche comme complète/incomplète -->
           <td>
             <input
               type="checkbox"
@@ -52,7 +66,11 @@
               (change)="toggleCompletion(t)"
             />
           </td>
+
+          <!-- Date formatée (filtre Angular) -->
           <td>{{ t.createdAt | date : "short" }}</td>
+
+          <!-- Boutons d’action : modifier et supprimer -->
           <td>
             <button class="btn modifier" [routerLink]="['/task/' + t._id]">
               Modifier
@@ -62,15 +80,22 @@
             </button>
           </td>
         </tr>
-        } @empty {
+        }
+
+        <!-- Si la liste est vide malgré le filtre -->
+        @empty {
         <tr>
           <td colspan="6">Aucune tâche trouvée.</td>
         </tr>
         }
       </tbody>
     </table>
+
     } @else {
+
+    <!-- Message d’info si aucune tâche à afficher (liste globale vide) -->
     <p class="liste-vide">La liste est vide</p>
+
     }
   </div>
 </div>

@@ -12,10 +12,13 @@ form {
   flex-direction: column;
   gap: 24px;
   transition: all 0.3s ease-in-out;
+  // Container élégant, léger effet flou, coins arrondis et ombre soft.
+  // Flex vertical avec espaces entre éléments, effet smooth sur changement.
 
   div {
     display: flex;
     flex-direction: column;
+    // Chaque div organise label + input verticalement, propre et clair.
   }
 
   label {
@@ -24,6 +27,7 @@ form {
     margin-bottom: 6px;
     color: #475569;
     user-select: none;
+    // Label bien visible, stylé et pas sélectionnable par accident.
   }
 
   input {
@@ -36,12 +40,14 @@ form {
     outline: none;
     color: #334155;
     font-weight: 600;
+    // Input confortable, design clean, focus smooth.
 
     &:focus {
       border-color: #475569;
       box-shadow: 0 0 8px 2px rgba(71, 85, 105, 0.5);
       background-color: #fff;
       animation: pulseBorder 1.2s infinite alternate ease-in-out;
+      // Focus qui pulse doucement, attire l’œil sans être agressif.
     }
   }
 
@@ -53,10 +59,12 @@ form {
     cursor: pointer;
     border: none;
     transition: transform 0.2s ease, box-shadow 0.3s ease;
+    // Boutons larges, modernes, effet levé au hover.
 
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      // Hover léger qui fait décoller le bouton, effet premium.
     }
   }
 
@@ -65,12 +73,14 @@ form {
     color: white;
     margin-right: 12px;
     width: fit-content;
+    // Submit button sérieux en bleu-gris, bien visible.
   }
 
   button[routerLink] {
     background: linear-gradient(135deg, #ff5c5c, #ff9a9a);
     color: white;
     width: fit-content;
+    // Bouton annuler punchy en rouge, clair que c’est une action différente.
   }
 
   @media (max-width: 480px) {
@@ -79,9 +89,11 @@ form {
 
     button {
       width: 100%;
+      // Responsive friendly : boutons full width sur petits écrans
     }
   }
 }
+
 .titre {
   font-size: 2.2rem;
   text-align: center;
@@ -90,7 +102,9 @@ form {
   color: #475569;
   letter-spacing: 0.5px;
   animation: fadeInDown 0.5s ease;
+  // Titre imposant, classe et animé subtilement à l’entrée.
 }
+
 @keyframes pulseBorder {
   from {
     box-shadow: 0 0 10px 3px rgba(71, 85, 105, 0.4);
@@ -98,7 +112,9 @@ form {
   to {
     box-shadow: 0 0 15px 5px rgba(71, 85, 105, 0.8);
   }
+  // Animation d’un halo qui pulse doucement sur le focus input
 }
+
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -108,4 +124,5 @@ form {
     opacity: 1;
     transform: translateY(0);
   }
+  // Animation fluide qui fait glisser et apparaître le titre depuis le haut
 }

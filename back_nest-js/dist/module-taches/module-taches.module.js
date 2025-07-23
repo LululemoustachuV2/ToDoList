@@ -18,7 +18,9 @@ exports.ModuleTachesModule = ModuleTachesModule;
 exports.ModuleTachesModule = ModuleTachesModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forFeature([{ name: schema_taches_schema_1.SchemaTaches.name, schema: schema_taches_schema_1.TachesSchema }]),
+            mongoose_1.MongooseModule.forFeature([
+                { name: schema_taches_schema_1.SchemaTaches.name, schema: schema_taches_schema_1.TachesSchema },
+            ]),
         ],
         controllers: [controller_taches_controller_1.ControllerTachesController],
         providers: [service_taches_service_1.ServiceTachesService],

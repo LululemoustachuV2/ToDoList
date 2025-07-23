@@ -1,9 +1,26 @@
+<!-- Barre de navigation principale -->
 <nav class="main-navbar">
+  <!-- Conteneur des boutons de navigation -->
   <div class="nav-content">
-    <button [routerLink]="['tasks']" routerLinkActive="activeLink" class="nav-btn">
+    <!-- Bouton de navigation vers la liste des tâches -->
+    <!-- [routerLink]="['tasks']" : définit la route vers laquelle naviguer quand on clique -->
+    <!-- routerLinkActive="activeLink" : ajoute la classe 'activeLink' si la route est active (utile pour styliser l'onglet actif) -->
+    <!-- class="nav-btn" : classe CSS pour le style du bouton -->
+    <button
+      [routerLink]="['tasks']"
+      routerLinkActive="activeLink"
+      class="nav-btn"
+    >
       Liste des tâches
     </button>
-    <button [routerLink]="['new']" routerLinkActive="activeLink" class="nav-btn">
+
+    <!-- Bouton de navigation vers le formulaire d'ajout de tâches -->
+    <!-- Même fonctionnement que le bouton précédent, mais vers une autre route ('new') -->
+    <button
+      [routerLink]="['new']"
+      routerLinkActive="activeLink"
+      class="nav-btn"
+    >
       Ajouter des tâches
     </button>
   </div>

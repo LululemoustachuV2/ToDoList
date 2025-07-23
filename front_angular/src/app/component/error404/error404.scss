@@ -1,44 +1,78 @@
 .not-found-container {
+  // Conteneur principal centré avec flou esthétique
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 100px; // espace pour le header
+  padding-bottom: 100px; // espace pour le footer
   text-align: center;
-  background-color: #f8f8f8;
-  color: #333;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding: 0 20px;
+  background: rgba(255, 255, 255, 0.6); // effet de transparence léger
+  backdrop-filter: blur(12px); // flou pour l'effet "frosted glass"
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); // ombrage léger et diffus
+  color: #222;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  animation: fadeInDown 0.5s ease; // effet d’apparition du haut
 }
 
 .error-code {
-  font-size: 8em;
+  // Grosse typo pour marquer le code 404
+  font-size: 8rem;
   font-weight: 900;
-  color: #7b61ff;
+  color: #475569; // bleu/gris sobre
+  letter-spacing: 0.5px;
 }
 
 .error-message {
+  // Sous-titre clair et impactant
   font-size: 2rem;
-  margin: 10px 0;
+  margin: 10px 0 20px 0;
+  font-weight: 700;
+  color: #475569;
 }
 
 .error-description {
-  font-size: 1rem;
+  // Texte explicatif un peu plus doux
+  font-size: 1.1rem;
   max-width: 400px;
-  margin-bottom: 20px;
+  margin: 0 auto 30px auto;
+  color: #475569;
+  font-weight: 500;
 }
 
 .home-button {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #7b61ff;
+  // Bouton de retour stylé
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #475569, #64748b); // dégradé sobre
   color: white;
-  border-radius: 8px;
-  text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.3s;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-size: 1rem;
+  user-select: none;
+}
 
-  &:hover {
-    background-color: #674ed1;
+.home-button:hover {
+  // Effet hover smooth avec élévation
+  background: linear-gradient(135deg, #64748b, #475569);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(71, 85, 105, 0.4);
+}
+
+/* Animation d’apparition descendante */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

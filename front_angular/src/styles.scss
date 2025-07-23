@@ -1,11 +1,9 @@
-// Include theming for Angular Material with `mat.theme()`.
-// This Sass mixin will define CSS variables that are used for styling Angular Material
-// components according to the Material 3 design spec.
-// Learn more about theming and how to use it for your application's
-// custom components at https://material.angular.dev/guide/theming
+// Import et utilisation du thème Angular Material (Material 3) via mat.theme()
+// Cela permet de définir des variables CSS pour styliser les composants Material selon les specs Material 3
 @use "@angular/material" as mat;
 
 html {
+  // On applique la mixin mat.theme avec palette primaire magenta, tertiaire violet, typo Roboto, densité standard
   @include mat.theme(
     (
       color: (
@@ -17,19 +15,16 @@ html {
     )
   );
 
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
+  // Définit la couleur du thème par défaut en clair (peut être changé en 'dark' ou 'light dark' selon besoin)
   color-scheme: light;
 
-  // Set a default background, font and text colors for the application using
-  // Angular Material's system-level CSS variables. Learn more about these
-  // variables at https://material.angular.dev/guide/system-variables
+  // Couleurs de fond et de texte par défaut, issues des variables système Angular Material
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
-} /* You can add global styles to this file, and also import other style files */
+}
 
+// Reset basique pour html et body pour éviter marges/paddings par défaut, et config de base flex vertical
 html,
 body {
   margin: 0;
@@ -41,36 +36,47 @@ body {
   flex-direction: column;
 }
 
+// Corps de la page en flex grow pour prendre tout l’espace vertical possible
 body {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
+
+// Mode sombre activé par la classe "dark" sur le body
 body.dark {
+  // Fond sombre en dégradé, texte clair pour contraste maximum
   background: linear-gradient(135deg, #121212, #1e1e1e) !important;
   color: #f5f5f5 !important;
 
+  // Conteneur des tâches avec fond sombre transparent et ombre plus marquée
   .liste-taches-container {
     background: rgba(30, 30, 30, 0.7) !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
   }
 
+  // Ligne du tableau en mode sombre avec couleurs de fond adaptées
   .todo-table tbody tr td {
     background-color: rgba(40, 40, 40, 0.9) !important;
     color: #f5f5f5 !important;
 
+    // Survol plus clair pour indiquer l’interactivité
     &:hover {
       background-color: #2c2c3c !important;
     }
   }
+
+  // Label filtre en clair
   .filtre {
     color: #f5f5f5 !important;
   }
 
+  // Bouton supprimer en rouge sombre, plus chaud que le mode clair
   .btn.supprimer {
     background: linear-gradient(135deg, #ff5c5c, #d84444) !important;
   }
 
+  // Select de filtre avec fond sombre et couleurs claires, focus avec légère variation
   .filtre-container select {
     background: #2e2e2e !important;
     color: #eee !important;
@@ -79,13 +85,10 @@ body.dark {
       background-color: #3a3a3a !important;
     }
   }
+
+  // Navbar principale en semi-transparent sombre avec bordure subtile
   .main-navbar {
-    background: rgba(
-      75,
-      76,
-      77,
-      0.4
-    ) !important;
+    background: rgba(75, 76, 77, 0.4) !important;
     border-bottom: 1px solid rgba(41, 40, 40, 0.1);
 
     .nav-content {
@@ -106,6 +109,8 @@ body.dark {
       }
     }
   }
+
+  // Input recherche en fond sombre, bord clair, texte clair, focus plus foncé et bord plus bleu
   .recherche-input {
     background: #1e293b !important;
     border-color: #334155 !important;
@@ -116,13 +121,15 @@ body.dark {
       border-color: #64748b !important;
     }
   }
+
+  // Formulaires en fond sombre avec ombre plus marquée, texte clair
   form {
     background: rgba(30, 30, 30, 0.7) !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
     color: #eee !important;
 
     label {
-      color: #a0aec0 !important;
+      color: #a0aec0 !important; // labels gris clair
     }
 
     input {
@@ -138,6 +145,8 @@ body.dark {
     }
   }
 }
+
+// Wrapper principal en flex vertical qui occupe toute la hauteur minimale de la fenêtre
 .app-wrapper {
   flex: 1;
   display: flex;

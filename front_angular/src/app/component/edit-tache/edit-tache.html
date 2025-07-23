@@ -1,11 +1,18 @@
 <form [formGroup]="TacheModifForm" (ngSubmit)="onSubmit()">
+  <!-- Formulaire réactif lié au FormGroup 'TacheModifForm' -->
+  <!-- Soumission déclenche la méthode onSubmit() -->
+
   <h2 class="titre">Modification de tâche</h2>
+
   <div>
     <label for="_id" class="disable">Id</label>
+    <!-- Champ ID en lecture seule (style disable), non modifiable par l'utilisateur -->
     <input id="_id" class="disable" formControlName="_id" />
   </div>
+
   <div>
     <label for="title">Titre</label>
+    <!-- Champ titre modifiable, obligatoire -->
     <input id="title" formControlName="title" />
     <div
       class="form-error"
@@ -15,16 +22,25 @@
       "
     >
       Le titre est requis.
+      <!-- Message d'erreur visible si le champ titre est touché et invalide -->
     </div>
   </div>
+
   <div>
     <label for="description">Description</label>
+    <!-- Champ description modifiable, optionnel -->
     <input id="description" formControlName="description" />
   </div>
+
   <div>
     <label for="createdAt" class="disable">Date de création </label>
+    <!-- Date de création affichée en lecture seule, ne doit pas être modifiée -->
     <input id="createdAt" class="disable" formControlName="createdAt" />
   </div>
+
   <button type="submit">Valider</button>
+  <!-- Bouton pour soumettre les modifications -->
+
   <button [routerLink]="['/tasks']">Annuler</button>
+  <!-- Bouton lien pour annuler et revenir à la liste des tâches -->
 </form>

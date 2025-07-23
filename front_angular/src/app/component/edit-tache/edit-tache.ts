@@ -20,6 +20,7 @@ import { CommonModule } from '@angular/common';
 export class EditTache implements OnInit {
   TacheModifForm: FormGroup;
   taches: TacheModel[] = [];
+  // Formulaire réactif et liste locale des tâches
 
   constructor(
     private fb: FormBuilder,
@@ -27,20 +28,23 @@ export class EditTache implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    //TODO: Ajout d'affichage d'erreurs pour les champs du formulaire tittle
+    // Initialisation du formulaire avec champs désactivés pour _id et createdAt
     this.TacheModifForm = this.fb.group({
       _id: [{ value: '', disabled: true }],
-      title: ['', Validators.required],
+      title: ['', Validators.required], // titre obligatoire
       description: [''],
-      completed: [false, Validators.required],
+      completed: [false, Validators.required], // statut obligatoire
       createdAt: [{ value: '', disabled: true }],
     });
   }
 
   ngOnInit(): void {
+    // Charge toutes les tâches
     this.TacheService.getAllTache().subscribe((tache) => {
       this.taches = tache;
     });
+
+    // Récupère l’ID depuis les params route et patch les valeurs dans le formulaire
     this.route.params.subscribe((params) => {
       if (params['id']) {
         this.TacheService.getTacheById(params['id']).subscribe((tache) => {
@@ -49,11 +53,16 @@ export class EditTache implements OnInit {
       }
     });
   }
+
   onSubmit(): void {
+    // Récupère les valeurs du formulaire y compris les champs désactivés via getRawValue()
     const id = this.TacheModifForm.getRawValue()._id;
     const tacheData = this.TacheModifForm.getRawValue();
+
     if (this.TacheModifForm.valid) {
+      // Appelle le service pour mettre à jour la tâche côté backend
       this.TacheService.updateTache(tacheData, id).subscribe(() => {
+        // Redirection vers la liste des tâches après succès
         this.router.navigate(['/tasks']);
       });
     }

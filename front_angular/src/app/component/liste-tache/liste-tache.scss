@@ -1,20 +1,23 @@
+// Conteneur principal de la section liste des tâches
 .liste-taches-container {
   max-width: 1000px;
   margin: 40px auto;
   padding: 30px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.6); // effet de transparence
+  backdrop-filter: blur(12px); // flou de fond pour effet glassmorphism
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   color: #222;
   transition: all 0.3s ease-in-out;
 
+  // Responsive : padding réduit sur écran moyen/petit
   @media (max-width: 768px) {
     padding: 20px;
   }
 }
 
+// Titre principal
 .titre {
   font-size: 2.2rem;
   text-align: center;
@@ -25,6 +28,7 @@
   animation: fadeInDown 0.5s ease;
 }
 
+// Animation d’entrée du titre
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -36,6 +40,7 @@
   }
 }
 
+// Conteneur pour filtres (recherche + select)
 .filtre-container {
   display: flex;
   align-items: baseline;
@@ -43,6 +48,7 @@
   margin-bottom: 20px;
   justify-content: space-between;
 
+  // Style du <select> de filtrage
   select {
     padding: 10px 16px;
     border-radius: 12px;
@@ -64,16 +70,19 @@
   }
 }
 
+// Permet un scroll horizontal si table trop large
 .table-container {
   overflow-x: auto;
 }
 
+// Style de la table des tâches
 .todo-table {
   width: 100%;
   border-collapse: collapse;
   border-radius: 16px;
   overflow: hidden;
 
+  // En-tête de la table
   thead {
     background-color: #475569;
     color: white;
@@ -85,16 +94,19 @@
     }
   }
 
+  // Corps de la table
   tbody {
     tr {
       background-color: rgba(255, 255, 255, 0.8);
       transition: background-color 0.3s ease, transform 0.3s ease;
 
+      // Effet au survol
       &:hover {
         background-color: #f4f4ff;
         transform: scale(1.01);
       }
 
+      // Style spécifique pour une tâche terminée
       &.completed {
         background: linear-gradient(90deg, #93c5fd, #bfdbfe);
         color: #1e293b;
@@ -109,7 +121,8 @@
         transition: color 0.3s ease;
       }
 
-      input[type='checkbox'] {
+      // Case à cocher de complétion
+      input[type="checkbox"] {
         width: 18px;
         height: 18px;
         accent-color: #475569;
@@ -119,6 +132,7 @@
   }
 }
 
+// Styles génériques des boutons
 .btn {
   padding: 8px 16px;
   margin: 4px;
@@ -134,17 +148,20 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   }
 
+  // Bouton "Modifier"
   &.modifier {
     background: linear-gradient(135deg, #475569, #64748b);
     color: white;
   }
 
+  // Bouton "Supprimer"
   &.supprimer {
     background: linear-gradient(135deg, #ff5c5c, #ff9a9a);
     color: white;
   }
 }
 
+// Message pour liste vide
 .liste-vide {
   text-align: center;
   font-style: italic;
@@ -153,6 +170,7 @@
   animation: fadeIn 0.5s ease;
 }
 
+// Animation du message vide
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -162,6 +180,7 @@
   }
 }
 
+// Commutateur de thème (light/dark)
 .theme-toggle {
   display: flex;
   justify-content: flex-end;
@@ -179,6 +198,7 @@
       height: 0;
     }
 
+    // Slider visuel du toggle
     .slider {
       position: absolute;
       cursor: pointer;
@@ -192,8 +212,9 @@
       transition: all 0.4s ease;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 
+      // Bulle du switch
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         height: 26px;
         width: 26px;
@@ -206,6 +227,7 @@
       }
     }
 
+    // Etat activé du switch
     input:checked + .slider {
       background: #374151;
     }
@@ -216,6 +238,8 @@
     }
   }
 }
+
+// Champ de recherche stylisé
 .recherche-container {
   display: flex;
   justify-content: center;
@@ -239,4 +263,3 @@
     }
   }
 }
-

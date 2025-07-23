@@ -1,13 +1,24 @@
 <form [formGroup]="TacheCreaForm" (ngSubmit)="onSubmit()">
+  <!-- Formulaire réactif lié au FormGroup 'TacheCreaForm' défini en TypeScript -->
+  <!-- Appelle la méthode onSubmit() à la soumission -->
+
   <h2 class="titre">Ajout de tâche</h2>
+
   <div>
     <label for="title">Titre</label>
+    <!-- Champ input lié au contrôle 'title' du formulaire -->
     <input id="title" formControlName="title" />
   </div>
+
   <div>
     <label for="description">Description</label>
+    <!-- Champ input lié au contrôle 'description' du formulaire -->
     <input id="description" formControlName="description" />
   </div>
+
   <button type="submit">Valider</button>
+  <!-- Bouton submit qui déclenche la soumission du formulaire -->
+
   <button [routerLink]="['/tasks']">Annuler</button>
+  <!-- Bouton lien Angular pour naviguer vers la page liste des tâches sans soumettre -->
 </form>
