@@ -1,8 +1,8 @@
 export class TachesDTO {
-  readonly title: string;
-  readonly description?: string;
-  readonly completed?: boolean;
-  readonly createdAt: Date;
+  readonly title: string; // Titre de la tâche, obligatoire
+  readonly description?: string; // Description optionnelle de la tâche
+  readonly completed?: boolean; // Statut d’achèvement, optionnel (true/false)
+  readonly createdAt: Date; // Date de création, obligatoire
 
   constructor(
     title: string,
@@ -13,6 +13,7 @@ export class TachesDTO {
     this.title = title;
     this.description = description;
     this.completed = completed;
+    // Si pas de date fournie, initialise avec la date actuelle
     this.createdAt = createdAt || new Date();
   }
 }

@@ -5,17 +5,21 @@ import { TachesDTO } from 'src/dto/taches-dto.dto';
 import { SchemaTaches, TachesDocument } from 'src/schema/schema-taches.schema';
 
 @Injectable()
+// Service injectable contenant la logique métier liée aux tâches
 export class ServiceTachesService {
   constructor(
     @InjectModel(SchemaTaches.name) private tachesModel: Model<TachesDocument>,
+    // Injection du modèle Mongoose 'Taches' pour interagir avec la base MongoDB
   ) {}
 
+  // Création d’une nouvelle tâche à partir d’un DTO
   async addTache(tachesDTO: TachesDTO): Promise<SchemaTaches> {
     try {
       const creerTaches = new this.tachesModel(tachesDTO);
-      return await creerTaches.save();
+      return await creerTaches.save(); // Sauvegarde en base et retourne la tâche créée
     } catch (error) {
       console.log(error);
+      // Gestion des erreurs avec exception HTTP 500 (erreur serveur)
       throw new HttpException(
         'Erreur lors de la création de la tâche',
         HttpStatus.INTERNAL_SERVER_ERROR,
@@ -23,6 +27,7 @@ export class ServiceTachesService {
     }
   }
 
+  // Récupération de toutes les tâches en base
   async getAllTaches(): Promise<SchemaTaches[]> {
     try {
       return await this.tachesModel.find().exec();
@@ -35,9 +40,11 @@ export class ServiceTachesService {
     }
   }
 
+  // Récupère une tâche par son ID, avec gestion des erreurs spécifiques
   async getTacheById(id: string): Promise<SchemaTaches> {
     try {
       if (!id) {
+        // Si l’ID n’est pas fourni, renvoie une erreur 400 (mauvaise requête)
         throw new HttpException(
           'ID de la tâche est requis',
           HttpStatus.BAD_REQUEST,
@@ -47,6 +54,7 @@ export class ServiceTachesService {
       const tache = await this.tachesModel.findById(id).exec();
 
       if (!tache) {
+        // Si aucune tâche ne correspond à l’ID, renvoie une erreur 404 (non trouvé)
         throw new HttpException(
           "Tâche avec l'id " + id + ' introuvable',
           HttpStatus.NOT_FOUND,
@@ -56,6 +64,7 @@ export class ServiceTachesService {
       return tache;
     } catch (error) {
       if (error instanceof HttpException) {
+        // Relance l’exception si c’est déjà une erreur HTTP connue
         throw error;
       }
 
@@ -67,6 +76,7 @@ export class ServiceTachesService {
     }
   }
 
+  // Met à jour une tâche par son ID avec les données reçues
   async updateTache(id: string, updateTachesDto: any): Promise<SchemaTaches> {
     try {
       if (!id) {
@@ -76,10 +86,12 @@ export class ServiceTachesService {
         );
       }
 
+      // Protection : empêche la modification de la date de création
       if ('createdAt' in updateTachesDto) {
         delete updateTachesDto.createdAt;
       }
 
+      // Mise à jour avec retour du document modifié ({ new: true })
       const updatedTache = await this.tachesModel.findByIdAndUpdate(
         id,
         updateTachesDto,
@@ -105,6 +117,7 @@ export class ServiceTachesService {
     }
   }
 
+  // Supprime une tâche par son ID
   async deleteTache(id: string): Promise<SchemaTaches> {
     try {
       if (!id) {
